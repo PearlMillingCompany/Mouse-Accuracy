@@ -6,3 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
 });
+
+document.getElementById("colorDropDown").addEventListener("click", colorChange)
+function colorChange (){
+
+}
+
+
+document.getElementById("shapeDropDown").addEventListener("click", shapeChange)
+function shapeChange (){
+    
+}

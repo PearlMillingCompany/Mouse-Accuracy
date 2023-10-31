@@ -1,19 +1,23 @@
 <!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <link href="main.js" rel="stylesheet">
+
+  <title>Mouse Accuracy Game</title>
+
+</head>
+
+<!--Put the color choosing stuff here-->
 <body>
-
-<script type="text/javascript" src="./main.css"></script>
-
-
-<p id="Paragraph">Experiment with fonts</p>
-    <label for="fontSelector">Choose a font:</label>
-    <select id="fontSelector">
-        <option value="">Arial</option>
-        <option value="">Times New Roman</option>
-        <option value="">Courier New</option>
-    </select> 
-
-<button id = "startButton">Click Here to Start</button>
-
-
+  <div id="game-container">
+    <button id="start-button">Start</button>
+  </div>
+  <div id="scoreboard">
+    <p>Total Targets: <span id="total-targets">0</span></p>
+    <p>Targets Hit: <span id="targets-hit">0</span></p>
+    <p>Score: <span id="score">0</span></p>
+  </div>
+    
 </body>
 </html>

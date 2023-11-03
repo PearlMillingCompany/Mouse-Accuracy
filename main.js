@@ -2,7 +2,7 @@ var gameStarted = false;
 var totalTargets = 0;
 var targetsHit = 0;
 var score = 0;
-var gameDuration = 100;
+var gameDuration = 50;
 var timer;
 var button = document.getElementById("start-button");
 
@@ -20,8 +20,10 @@ button.addEventListener("click", () => {
         startTimer();
     }
 
+    
+
     function createTarget() {
-        const target = document.createElement('div');
+        var target = document.createElement('div');
         target.className = 'target';
         target.style.left = `${Math.random() * 90 + 5}%`;
         target.style.top = `${Math.random() * 90 + 5}%`;

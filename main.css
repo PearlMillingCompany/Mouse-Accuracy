@@ -1,11 +1,12 @@
 body {
     font-family: Arial, sans-serif;
+    background-image: url(Mouse_Accuracy.jpeg);
   }
   #game-container {
     text-align: center;
     position: relative;
     height: 400px;
-    background-color: #f0f0f0;
+    
   }
   .target {
     width: 50px;
@@ -16,7 +17,11 @@ body {
     transition: transform 2s;
   }
   #start-button {
+    width: 120px;
+    height: 75px;
     margin-top: 10px;
+
+    
   }
   #scoreboard {
     display: none;

@@ -21,3 +21,11 @@ body {
   #scoreboard {
     display: none;
   }
+
+  #color-menu {
+    display: list-item;
+  }
+
+  #shape-menu {
+    display:list-item;
+  }

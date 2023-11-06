@@ -10,6 +10,7 @@ body {
   margin: auto;
   border: 1px solid black;
 }
+
 .target {
   position: absolute;
     background-color: black;
@@ -40,10 +41,14 @@ body {
   margin-top: 10;
 }
 
-#color-menu {
-  display: list-item;
+#shape-menu {
+  display: inline;
 }
 
-#shape-menu {
-  display:list-item;
+#color-menu {
+  display: inline;
+}
+
+#color-label::before {
+
 }

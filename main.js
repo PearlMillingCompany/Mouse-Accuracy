@@ -1,76 +1,78 @@
-var gameStarted = false;
-var totalTargets = 0;
-var targetsHit = 0;
-var score = 0;
-var gameDuration = 50;
-var timer;
-var button = document.getElementById("start-button");
 
-button.addEventListener("click", () => {
-    startGame();
-    function startGame() {
+    var gameStarted = false;
+    var totalTargets = 0;
+    var score = 0;
+    var gameDuration = 20;
+    var button = document.getElementById("start-button");
+
+    const gameContainer = document.getElementById("game-container");
+    const totalTargetsDisplay = document.getElementById("total-targets");
+    const clickedTargetsDisplay = document.getElementById("targets-hit");
+    const scoreDisplay = document.getElementById("score");
+
+    button.addEventListener("click", () => {
+      var selectedColor = document.getElementById("color-menu").value;
+      var selectedShape = document.getElementById("shape-menu").value;
+
+      function startGame() {
         gameStarted = true;
         totalTargets = 0;
-        targetsHit = 0;
         score = 0;
-        document.getElementById('start-button').style.display = 'none';
-        document.getElementById('scoreboard').style.display = 'none';
-        document.getElementById('game-container').innerHTML = '';
-        createTarget();
-        startTimer();
-    }
+        totalTargetsDisplay.textContent = totalTargets;
+        clickedTargetsDisplay.textContent = score;
+        scoreDisplay.textContent = "0%";
 
-    
-
-    function createTarget() {
-        var target = document.createElement('div');
-        target.className = 'target';
-        target.style.left = `${Math.random() * 90 + 5}%`;
-        target.style.top = `${Math.random() * 90 + 5}%`;
-        target.style.transitionDuration = `${Math.random() * 1 + 1}s`;
-        target.onclick = hitTarget;
-        document.getElementById('game-container').appendChild(target);
-        totalTargets++;
-        setTimeout(() => {
-            if (target.parentNode) {
-                target.parentNode.removeChild(target);
-            }
-        }, (Math.random() * 500 + 500));
-        if (gameStarted) {
-            setTimeout(createTarget, Math.random() * 2000 + 500);
-        }
-    }
-
-    function hitTarget() {
-        targetsHit++;
-        this.style.transform = 'scale(0)';
-        setTimeout(() => {
-            if (this.parentNode) {
-                this.parentNode.removeChild(this);
-            }
-        }, 200);
-    }
-
-    function startTimer() {
-        let seconds = gameDuration;
-        timer = setInterval(() => {
-            seconds--;
-            if (seconds <= 0) {
-                endGame();
-            }
+        // Game timer doesn't work yet
+        const startTime = Date.now(); 
+        const interval = setInterval(() => {
+          const currentTime = Date.now();
+          const elapsedTime = (currentTime - startTime) / 1000;
+          if (elapsedTime >= gameDuration) {
+            clearInterval(interval);
+            gameStarted = false;
+            endGame();
+          }
         }, 1000);
-    }
 
-    function endGame() {
-        gameStarted = false;
-        clearInterval(timer);
-        score = (targetsHit / totalTargets) * 100;
-        document.getElementById('score').textContent = score.toFixed(2);
-        document.getElementById('total-targets').textContent = totalTargets;
-        document.getElementById('targets-hit').textContent = targetsHit;
-        document.getElementById('scoreboard').style.display = 'block';
-        document.getElementById('start-button').style.display = 'block';
-    }
-});
+        // Create targets with the selected color at random positions one at a time
+        function createTarget() {
+          const target = document.createElement("div");
+          target.className = "target";
+          target.style.left = Math.random() * (gameContainer.clientWidth - 20) + "px";
+          target.style.top = Math.random() * (gameContainer.clientHeight - 20) + "px";
+          target.style.backgroundColor = selectedColor;
+          target.addEventListener("click", () => {
+            target.remove();
+            score++;
+            clickedTargetsDisplay.textContent = score;
+            updateScore();
+            if (totalTargets < gameDuration) {
+              createTarget();
+            }
+          });
+          gameContainer.appendChild(target);
+          totalTargets++;
+          totalTargetsDisplay.textContent = totalTargets;
+        }
 
+        createTarget();
+      }
 
+      function updateScore() {
+        const accuracy = (score / totalTargets) * 100;
+        scoreDisplay.textContent = accuracy.toFixed(2) + "%";
+      }
+
+      function endGame() {
+        // Remove all remaining targets
+        const targets = document.querySelectorAll(".target");
+        targets.forEach((target) => target.remove());
+      }
+
+      startGame();})
+
+      ///Scoreboard stuff is wonky, need to be able to see it work correctly 
+      ///before setting it back to popping up after the user's game is finished
+      ///I took he timer code from stack overflow and it doesn't work well yet
+      ///No idea how to make the starting shape different
+      

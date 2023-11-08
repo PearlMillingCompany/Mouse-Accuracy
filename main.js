@@ -1,3 +1,4 @@
+//variables
 var gameStarted = false;
 var totalTargets = 0;
 var score = 0;
@@ -10,6 +11,7 @@ const clickedTargetsDisplay = document.getElementById("targets-hit");
 const scoreDisplay = document.getElementById("score");
 let timer;
 
+//starts the game when the start button is pressed
 button.addEventListener("click", () => {
     if (!gameStarted) {
         startGame();
@@ -39,6 +41,7 @@ function startGame() {
     updateTimerDisplay();
     timer = setInterval(updateTimerDisplay, 1000);
 
+    //creates the target (adjust as needed for the triangle and square)
     function createTarget() {
         const target = document.createElement("div");
         target.className = "target";
@@ -57,27 +60,31 @@ function startGame() {
         totalTargets++;
         totalTargetsDisplay.textContent = "Total Targets: " + totalTargets;
 
-        // Remove the target after 2 seconds (adjust this time as needed)
+    // Remove the target after 2 seconds (adjust this time as needed)
         setTimeout(() => {
             target.remove();
         }, 2000);
-
+        // Create a new target after 2 sec
         if (totalTargets < gameDuration) {
-            setTimeout(createTarget, 2000); // Create a new target after 500ms
+            setTimeout(createTarget, 2000); 
         }
     }
 
     createTarget();
 }
 
+//changes the score after every target is spawned
 function updateScore() {
     const accuracy = (score / totalTargets) * 100;
     scoreDisplay.textContent = "Accuracy: " + accuracy.toFixed(2) + "%";
 }
 
+//ends the game
 function endGame() {
     clearInterval(timer);
     gameStarted = false;
     const targets = document.querySelectorAll(".target");
     targets.forEach((target) => target.remove());
 }
+
+//Need to disable the button so the game doesn't continuously stat if the user keeps playing, maybe add difficulty if we have time

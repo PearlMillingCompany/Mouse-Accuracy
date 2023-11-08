@@ -12,7 +12,7 @@ body {
 }
 
 .target {
-  position: absolute;
+    position: absolute;
     background-color: black;
     border-radius: 50%;
     cursor: pointer;
@@ -39,10 +39,6 @@ body {
 }
 #scoreboard {
   margin-top: 10;
-}
-
-#shape-menu {
-  display: inline;
 }
 
 #color-menu {

@@ -1,6 +1,9 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
+    font-family: Arial, sans-serif;
+    background-image: url("Image_Mouse_Accuracy.\ .jpg"); 
+    background-size: 1200px;
+    background-size: 1520px 820px;
+    background-repeat: no-repeat;
 }
 #game-container {
   text-align: center;

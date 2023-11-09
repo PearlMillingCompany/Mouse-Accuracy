@@ -19,6 +19,10 @@ button.addEventListener("click", () => {
 });
 
 function startGame() {
+    const title = document.getElementById("title");
+    title.style.visibility = "hidden";
+    const gameContainer = document.getElementById("start-button");
+    gameContainer.style.visibility = "hidden";
     gameStarted = true;
     totalTargets = 0;
     score = 0;

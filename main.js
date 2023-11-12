@@ -2,14 +2,14 @@
 var gameStarted = false;
 var totalTargets = 0;
 var score = 0;
-var gameDuration = 60;
+var gameDuration = 30;
 var button = document.getElementById("start-button");
 
 const gameContainer = document.getElementById("game-container");
 const totalTargetsDisplay = document.getElementById("total-targets");
 const clickedTargetsDisplay = document.getElementById("targets-hit");
 const scoreDisplay = document.getElementById("score");
-var timer;
+
 
 //starts the game when the start button is pressed
 button.addEventListener("click", () => {
@@ -64,7 +64,7 @@ function startGame() {
         totalTargets++;
         totalTargetsDisplay.textContent = "Total Targets: " + totalTargets;
 
-    // Remove the target after 2 seconds (adjust this time as needed)
+    // Remove the target after 1 seconds (adjust this time as needed)
         setTimeout(() => {
             target.remove();
         }, 2000);

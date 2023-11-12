@@ -1,49 +1,64 @@
 body {
-    font-family: Arial, sans-serif;
-    background-image: url("Image_Mouse_Accuracy.\ .jpg"); 
-    background-size: 1200px;
-    background-size: 1520px 820px;
-    background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  background-image: url("Image_Mouse_Accuracy.\ .jpg"); 
+  background-size: 1200px;
+  background-size: 1520px 820px;
+  background-repeat: no-repeat;
+  
 }
 #game-container {
-  text-align: center;
-  position: relative;
-  height: 400px;
-  width: 400px;
-  margin: auto;
-  border: 1px solid black;
+text-align: center;
+position: relative;
+height: 400px;
+width: 400px;
+margin: auto;
+left: 30px;
+margin-top: 60px;
 }
 
 .target {
-    position: absolute;
-    background-color: black;
-    border-radius: 50%;
-    cursor: pointer;
-    animation: phase-in-out 2s linear infinite;
+  position: absolute;
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: phase-in-out 2s linear infinite;
 }
 @keyframes phase-in-out {
-  0%, 100% {
-    width: 0;
-    height: 0;
-    opacity: 0;
-  }
-  50% {
-    width: 20px;
-    height: 20px;
-    opacity: 1;
-  }
+0%, 100% {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+50% {
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+}
 }
 #start-button {
-  width: 120px;
-  height: 75px;
-  margin-top: 10px;
+width: 120px;
+height: 75px;
+margin-top: 10px;
 
-  
+
 }
 #scoreboard {
-  margin-top: 10;
+margin-top: -500px;
 }
 
 #color-menu {
-  display: inline;
+display: list-item;
+}
+
+p{
+color : #ffffff;
+
+}
+
+label {
+color : white;
+}
+
+h1 {
+margin-left: 560px;
 }
